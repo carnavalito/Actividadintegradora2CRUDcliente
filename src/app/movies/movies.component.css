@@ -1,0 +1,10 @@
+.pbackground{
+  background: url("../../assets/img/pbackground.jpg");
+
+}
+
+.list-group-item.active {
+
+  background-color: red !important;
+  border-color: red !important;
+}

@@ -1,0 +1,54 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          value="{{movie.title}}">
+      </div>
+
+      <div class="mb-3">
+        <label for="synopsis" class="form-label">Synopsis</label>
+        <textarea
+          rows="4"
+          type="text"
+          class="form-control"
+          id="synopsis"
+          formControlName="synopsis">
+              </textarea>
+      </div>
+      <div class="mb-3">
+        <label for="year" class="form-label">Año de estreno</label>
+        <input
+          type="number"
+          class="form-control"
+          id="year"
+          formControlName="year">
+      </div>
+      <div class="mb-3">
+        <label for="cover" class="form-label">Cover</label>
+        <textarea
+          rows="4"
+          type="text"
+          class="form-control"
+          id="cover"
+          formControlName="cover">
+              </textarea>
+      </div>
+
+      <button type="submit"
+              class="btn btn-success m-2"
+              [disabled]="!editForm.dirty && editForm.valid"
+      >Editar
+      </button>
+    </form>
+  </div>
+
+</div>
+<div>
+
+</div>

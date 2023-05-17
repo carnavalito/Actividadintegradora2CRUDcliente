@@ -1,0 +1,33 @@
+<div class=" pt-5 pb-5 pbackground" style="min-height: 80vh;" >
+  <div class="container">
+  <div class="text-center">
+    <h1 style="font-size: 3rem;">LISTA DE PELICULAS</h1>
+  </div>
+  <div class="row">
+    <div class="list-group col-6">
+
+      <a *ngFor="let movie of movies; index as i "
+         routerLink="/movie/{{i}}"
+         routerLinkActive="active"
+         class="list-group-item list-group-item-action"
+         aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{movie.title}}</h5>
+        </div>
+
+      </a>
+
+    </div>
+    <div class="col-6">
+      <router-outlet></router-outlet>
+
+    </div>
+  </div>
+  <div class="text-center mt-5">
+    <p style="font-weight: bolder; font-size: large; background: red;color:white;">Este es un proyecto que está siendo desarrollado con Las tecnologías de angular para el frontend y con laravel
+      para el backend mediante una rest api, en el cual se pueden agregar películas junto con su descripción, cover y año de
+      estreno, tan solo basta con darle clic a la película deseada y se desplegará la información de la misma.</p>
+  </div>
+  </div>
+
+</div>
