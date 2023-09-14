@@ -1,12 +1,30 @@
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{movie.title}}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{movie.year}}</h6>
-    <p classs="card-text">{{movie.synopsis}}</p>
-    <p classs="card-text">{{movie.cover}}</p>
+<div class=" pt-5 pb-5 pbackground" style="min-height: 80vh;">
+  <div class="container">
+    <div class="row">
+      <div class="mb-3">
+        <a (click)="goBack()" class="btn btn-warning">Regresar al catalogo</a>
+      </div>
+      <div class="col-lg-12">
+        <div class="card d-flex align-items-center justify-content-center">
+
+
+          <img style="max-width: 50%;max-height: 500px;" src="{{movie.cover}}" class="card-img-top " alt="...">
+
+          <div class="card-body te">
+            <h2 class="card-title " style="color: red;">{{movie.title}}</h2>
+            <p class="card-text">{{movie.synopsis}}</p>
+          </div>
+          <div class="">
+            <a routerLink="/edit/{{movie.id}}" class="btn btn-warning m-3 text-white">Editar</a>
+            <button type="button" (click)="deleteMovie()" class="btn btn-danger m-3 ">Eliminar</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
-</div>
-<div class="mt-3">
-  <a routerLink="/movie/edit/{{id}}" class="btn btn-primary">Editar Pelicula</a>
+
 </div>

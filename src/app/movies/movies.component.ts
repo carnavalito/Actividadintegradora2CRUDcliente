@@ -31,7 +31,6 @@ export class MoviesComponent implements OnInit {
         }
       )
 
-
   }
   // onFetchPosts() {
   //   // Send Http request

@@ -13,10 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'movie', component: MoviesComponent,children:[
-      {path:':id',component:MovieComponent},
+
       {path:'edit/:id',component:EditComponent},
     ]
   },
+  {path:'movie/:id',component:MovieComponent},
+  {path:'edit/:id',component:EditComponent},
   {path:"add", component: AddComponent},
 
   {path: '**', redirectTo: '/'},

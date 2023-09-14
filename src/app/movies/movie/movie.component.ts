@@ -1,41 +1,58 @@
 import {Component, OnInit} from '@angular/core';
 import {PostService} from "../../post.service";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
   styleUrls: ['./movie.component.css']
 })
-export class MovieComponent implements OnInit{
+export class MovieComponent implements OnInit {
 
 
-  id:number;
+  id: number;
   movie;
 
-  constructor(private postService: PostService, private route: ActivatedRoute) {
+  constructor(private postService: PostService, private route: ActivatedRoute, private location: Location,private router:Router) {
   }
+
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        // this.movie = this.postService.fetchPosts2();
-        // this.recipe = this.recipes[+params['id']];
+
         this.postService.fetchPosts().subscribe(data => {
 
           this.movie = data['data'][this.id]
+          console.log(this.movie);
         });
 
       }
     )
 
 
+  }
+
+  deleteMovie() {
+
+    if(window.confirm('Estas Seguro que quieres eliminar la pelicula?')){
+      this.postService.deleteMovie(this.movie.id).subscribe(data => {
+        console.log(data);
+      })
+
+      this.postService.moviesChanged.next(this.postService.fetchPosts().subscribe());
+
+
+      this.router.navigate(['/movie'])
+    }
+
 
   }
 
-
-
-
+  goBack() {
+    this.location.back();
+  }
 
 
 }

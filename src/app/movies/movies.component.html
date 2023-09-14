@@ -4,7 +4,7 @@
     <h1 style="font-size: 3rem;">LISTA DE PELICULAS</h1>
   </div>
   <div class="row">
-    <div class="list-group col-6">
+    <div class="list-group col-12">
 
       <a *ngFor="let movie of movies; index as i "
          routerLink="/movie/{{i}}"
@@ -18,10 +18,10 @@
       </a>
 
     </div>
-    <div class="col-6">
-      <router-outlet></router-outlet>
+<!--    <div class="col-6">-->
+<!--      <router-outlet></router-outlet>-->
 
-    </div>
+<!--    </div>-->
   </div>
   <div class="text-center mt-5">
     <p style="font-weight: bolder; font-size: large; background: red;color:white;">Este es un proyecto que está siendo desarrollado con Las tecnologías de angular para el frontend y con laravel

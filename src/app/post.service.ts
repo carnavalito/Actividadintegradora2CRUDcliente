@@ -8,24 +8,27 @@ import {map, Subject} from "rxjs";
 })
 export class PostService {
   movieChanged = new Subject();
-  movies =[];
+  moviesChanged = new Subject();
 
-  constructor(private http:HttpClient) {
+  movies = [];
+
+  constructor(private http: HttpClient) {
 
   }
 
 
   fetchPosts() {
-     return this.http.get('http://127.0.0.1:8000/api/movies');
+    return this.http.get('http://127.0.0.1:8000/api/movies');
 
   }
 
 
-  getMovie(index: number) {
-    return this.movies[index];
+  getMovie(id: number) {
+    return this.http
+      .get(`http://127.0.0.1:8000/api/movie/${id}`);
   }
-  editMovie(editedMovie,id:number) {
 
+  editMovie(editedMovie, id: number) {
     this.http
       .put(
         `http://127.0.0.1:8000/api/movie/${id}`,
@@ -35,13 +38,19 @@ export class PostService {
     });
   }
 
-  addMovie(movie){
+  addMovie(movie) {
     return this.http
-      .post('http://127.0.0.1:8000/api/movie',movie)
+      .post('http://127.0.0.1:8000/api/movie', movie)
 
+  }
+
+  deleteMovie(id: number) {
+    return this.http
+      .delete(`http://127.0.0.1:8000/api/movie/${id}`)
 
 
   }
+
 
 
 
