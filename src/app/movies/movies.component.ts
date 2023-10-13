@@ -23,7 +23,6 @@ hola:String = "hola";
   ngOnInit() {
     this.postService.fetchPosts().subscribe(data => {
       this.videogames = data;
-      console.log(data);
     });
 
     this.subscription = this.postService.movieChanged
@@ -47,7 +46,7 @@ hola:String = "hola";
       };
 
       this.postService.deleteVideogame(options).subscribe(data => {
-        console.log(data);
+        // console.log(data);
       })
 
       // this.appService.videogamesChanged.next(this.appService.fetchPosts().subscribe());

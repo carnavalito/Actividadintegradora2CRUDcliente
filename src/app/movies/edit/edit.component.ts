@@ -3,6 +3,7 @@ import {PostService} from "../../post.service";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {Form, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
+import {HttpHeaders} from "@angular/common/http";
 
 @Component({
   selector: 'app-edit',
@@ -12,8 +13,8 @@ import {Location} from "@angular/common";
 export class EditComponent implements OnInit {
 
   id: number;
-  movieId: number;
-  movie;
+  videogameId: number;
+  videogame;
   editForm: FormGroup;
 
   constructor(private postService: PostService, private route: ActivatedRoute, private location: Location) {
@@ -24,13 +25,12 @@ export class EditComponent implements OnInit {
       (params: Params) => {
 
         this.id = +params['id'];
-        this.postService.getMovie(this.id).subscribe(data => {
+        this.postService.getVideogame(this.id).subscribe(data => {
 
-          this.movie = data['data'];
-          console.log(this.movie)
-          // this.movieId=this.movie.id;
-          // console.log(this.movieId);
-          this.initForm(this.movie);
+          this.videogame = data[0];
+          this.videogameId = this.videogame.id;
+          // console.log(this.videogame);
+          this.initForm(this.videogame);
 
 
         });
@@ -53,30 +53,25 @@ export class EditComponent implements OnInit {
 
   }
 
-  private initForm(movie) {
-
-
+  private initForm(videogame) {
     this.editForm = new FormGroup({
-      'title': new FormControl(movie.title, Validators.required),
-      'synopsis': new FormControl(movie.synopsis, Validators.required),
-      'year': new FormControl(movie.year, Validators.required),
-      'cover': new FormControl(movie.cover, Validators.required)
+      'nombre': new FormControl(videogame.nombre, Validators.required),
+      'genero': new FormControl(videogame.genero, Validators.required),
+      'lanzamiento': new FormControl(videogame.lanzamiento, Validators.required)
 
     })
-
-
   }
 
 
   onSubmit() {
     console.log(JSON.stringify(this.editForm.value));
 
-    this.postService.editMovie(this.editForm.value, this.movie.id);
+    this.postService.editVideogame(this.editForm.value, this.videogame.id);
     this.location.back();
     alert('Pelicula editada con exito');
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

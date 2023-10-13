@@ -19,20 +19,18 @@ export class PostService {
 
   fetchPosts() {
     return this.http.get('http://localhost:8080/listaVideojuegos');
-
   }
 
 
-  getMovie(id: number) {
+  getVideogame(id: number) {
+    return this.http.get(`http://localhost:8080/videojuego/${id}`,);
+  }
+
+  editVideogame(editedVideogame, id: number) {
     return this.http
-      .get(`http://localhost:8080/agregarVideojuego`);
-  }
-
-  editMovie(editedMovie, id: number) {
-    this.http
       .put(
-        `http://127.0.0.1:8000/api/movie/${id}`,
-        editedMovie
+        `http://localhost:8080/actualizarVideojuego/${id}`,
+        editedVideogame
       ).subscribe(responseData => {
       console.log(responseData);
     });
