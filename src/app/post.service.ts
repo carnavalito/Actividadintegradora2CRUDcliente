@@ -18,14 +18,14 @@ export class PostService {
 
 
   fetchPosts() {
-    return this.http.get('http://127.0.0.1:8000/api/movies');
+    return this.http.get('http://localhost:8080/listaVideojuegos');
 
   }
 
 
   getMovie(id: number) {
     return this.http
-      .get(`http://127.0.0.1:8000/api/movie/${id}`);
+      .get(`http://localhost:8080/agregarVideojuego`);
   }
 
   editMovie(editedMovie, id: number) {
@@ -38,15 +38,14 @@ export class PostService {
     });
   }
 
-  addMovie(movie) {
+  addVideogame(movie) {
     return this.http
-      .post('http://127.0.0.1:8000/api/movie', movie)
+      .post('http://localhost:8080/agregarVideojuego', movie)
 
   }
 
-  deleteMovie(id: number) {
-    return this.http
-      .delete(`http://127.0.0.1:8000/api/movie/${id}`)
+  deleteVideogame(body:any) {
+    return this.http.delete('http://localhost:8080/borrarVideojuego',body);
 
 
   }

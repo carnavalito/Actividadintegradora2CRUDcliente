@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '', component: HomeComponent
   },
   {
-    path: 'movie', component: MoviesComponent,children:[
+    path: 'videogames', component: MoviesComponent,children:[
 
       {path:'edit/:id',component:EditComponent},
     ]

@@ -18,23 +18,25 @@ export class AddComponent implements OnInit {
   ngOnInit() {
 
     this.addForm = new FormGroup({
-      'title': new FormControl(null, Validators.required),
-      'synopsis': new FormControl(null, Validators.required),
-      'year': new FormControl(null, Validators.required),
-      'cover': new FormControl(null, Validators.required)
+      'nombre': new FormControl(null, Validators.required),
+      'genero': new FormControl(null, Validators.required),
+      'lanzamiento': new FormControl(null, Validators.required)
+
 
     })
   }
 
   onSubmit() {
-    this.postService.addMovie(this.addForm.value).subscribe(responseData => {
+    // console.log(this.addForm.value);
+    this.postService.addVideogame(this.addForm.value).subscribe(responseData => {
+       console.log()
         console.log(responseData)
       }
     );
-
+    //
     this.postService.movieChanged.next(this.postService.fetchPosts().subscribe());
-    this.router.navigateByUrl("/movie");
-    alert('pelicula agregada con exito');
+    this.router.navigateByUrl("/videogames");
+    alert('Videojuego agregado con exito');
 
 
   }

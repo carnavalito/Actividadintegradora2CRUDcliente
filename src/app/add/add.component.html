@@ -5,48 +5,39 @@
       <div class="card-body">
         <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
+            <label for="nombre" class="form-label">Nombre</label>
             <input
               type="text"
               class="form-control"
-              id="title"
-              formControlName="title"
+              id="nombre"
+              formControlName="nombre"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="genero" class="form-label">Genero</label>
+            <input
+              type="text"
+              class="form-control"
+              id="genero"
+              formControlName="genero"
+            >
+          </div>
+          <div class="mb-3">
+            <label for="lanzamiento" class="form-label">Lanzamiento</label>
+            <input
+              type="text"
+              class="form-control"
+              id="lanzamiento"
+              formControlName="lanzamiento"
             >
           </div>
 
-          <div class="mb-3">
-            <label for="synopsis" class="form-label">Synopsis</label>
-            <textarea
-              rows="4"
-              type="text"
-              class="form-control"
-              id="synopsis"
-              formControlName="synopsis">
-              </textarea>
-          </div>
-          <div class="mb-3">
-            <label for="year" class="form-label">Año de estreno</label>
-            <input
-              type="number"
-              class="form-control"
-              id="year"
-              formControlName="year">
-          </div>
-          <div class="mb-3">
-            <label for="cover" class="form-label">Cover (url de la imagen)</label>
-            <textarea
-              rows="4"
-              type="text"
-              class="form-control"
-              id="cover"
-              formControlName="cover">
-              </textarea>
-          </div>
+
 
           <button type="submit"
                   class="btn btn-success m-2"
                   [disabled]=" !addForm.valid"
-          >Agregar Pelicula
+          >Agregar Videojuego
           </button>
         </form>
       </div>

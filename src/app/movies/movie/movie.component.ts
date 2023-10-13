@@ -37,7 +37,7 @@ export class MovieComponent implements OnInit {
   deleteMovie() {
 
     if(window.confirm('Estas Seguro que quieres eliminar la pelicula?')){
-      this.postService.deleteMovie(this.movie.id).subscribe(data => {
+      this.postService.deleteVideogame(this.movie.id).subscribe(data => {
         console.log(data);
       })
 
